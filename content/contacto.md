@@ -6,12 +6,6 @@ layout: "page"
 page_type: "contact"
 draft: false
 
-lang_switch:
-  enabled: true
-  label: "ES/EN"
-  target_url: "/e-n/"
-  aria_label: "Cambiar a Español"
-
 section_id: "contacto"
 eyebrow: "04 / CONTACT US"
 back_home_label: "← Back to home"

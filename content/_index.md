@@ -5,12 +5,6 @@ lang_code: "en"
 page_type: "home"
 draft: false
 
-lang_switch:
-  enabled: true
-  label: "ES/EN"
-  target_url: "/landing-page/"
-  aria_label: "Cambiar a Español"
-
 hero:
   section_id: "inicio"
   eyebrow: "TRANSPORT & LOGISTICS"

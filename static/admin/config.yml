@@ -15,8 +15,7 @@ logo_url: "/images/Group-1.svg"
 collections:
   # =========================================================================
   # 1. FOLDER COLLECTION: All Editable Content Pages (content/*.md)
-  #    Covers Home (_index.md), Contact (contacto.md), Spanish Landing
-  #    (landing-page.md), Spanish Contact (e-n.md), and any new page created.
+  #    Covers Home (_index.md), Contact (contacto.md), and any new page created.
   # =========================================================================
   - name: "pages"
     label: "Site Pages (Folder Collection)"
@@ -53,18 +52,6 @@ collections:
           - { label: "Standard Content Page", value: "standard" }
         default: "landing"
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
-
-      # Language Switcher Widget (Object with Boolean + Strings)
-      - label: "Language Switcher"
-        name: "lang_switch"
-        widget: "object"
-        collapsed: true
-        required: false
-        fields:
-          - { label: "Enable Switcher", name: "enabled", widget: "boolean", default: true }
-          - { label: "Button Label", name: "label", widget: "string", default: "ES/EN" }
-          - { label: "Target URL", name: "target_url", widget: "string", default: "/landing-page/" }
-          - { label: "ARIA Label", name: "aria_label", widget: "string", default: "Switch language", required: false }
 
       # Optional Page-Level Navigation Override (List Widget)
       - label: "Custom Page Navigation (Optional Override)"
