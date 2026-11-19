@@ -17,7 +17,7 @@ hero:
   bg_image: /images/truck_v2.webp
 services:
   section_id: servicios
-  title: Our service  demo holaaaa
+  title: Our service
   intro: "We understand your business and the day-to-day needs that come with it, so every shipment gets our full, personal attention. Here's how we can help:"
   tagline: ''
   items:
