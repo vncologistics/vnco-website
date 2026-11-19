@@ -47,7 +47,7 @@ about:
   images:
     - src: /images/box-trucks.webp
       alt: VNCO box trucks
-    - src: /images/vnco_box.png
+    - src: /images/uploads/images (4).jpeg
       alt: VNCO box
 contact_cta:
   section_id: contacto
