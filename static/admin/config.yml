@@ -1,0 +1,260 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: vnco-logistics/vnco-hugo-site
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "https://vncologistics.com"
+display_url: "https://vncologistics.com"
+logo_url: "/images/Group-1.svg"
+
+collections:
+  # =========================================================================
+  # 1. FOLDER COLLECTION: All Editable Content Pages (content/*.md)
+  #    Covers Home (_index.md), Contact (contacto.md), Spanish Landing
+  #    (landing-page.md), Spanish Contact (e-n.md), and any new page created.
+  # =========================================================================
+  - name: "pages"
+    label: "Site Pages (Folder Collection)"
+    label_singular: "Page"
+    description: "Manage all site pages including Home, Contact, and Landing pages."
+    folder: "content"
+    create: true
+    delete: true
+    extension: "md"
+    format: "yaml-frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} ({{lang_code | upper}} · {{page_type}})"
+    fields:
+      - { label: "Page Title", name: "title", widget: "string", required: true }
+      - { label: "Meta Description", name: "description", widget: "text", required: false }
+      - label: "Language Code"
+        name: "lang_code"
+        widget: "select"
+        options: ["en", "es"]
+        default: "en"
+      - label: "Template Layout"
+        name: "layout"
+        widget: "select"
+        options: ["page", "single"]
+        default: "page"
+        required: false
+      - label: "Page Type"
+        name: "page_type"
+        widget: "select"
+        options:
+          - { label: "Home / Landing Page (Hero + Services + About + CTA)", value: "landing" }
+          - { label: "Home Root (_index.md)", value: "home" }
+          - { label: "Contact Page (Dynamic Form + Office Info)", value: "contact" }
+          - { label: "Standard Content Page", value: "standard" }
+        default: "landing"
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+
+      # Language Switcher Widget (Object with Boolean + Strings)
+      - label: "Language Switcher"
+        name: "lang_switch"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Enable Switcher", name: "enabled", widget: "boolean", default: true }
+          - { label: "Button Label", name: "label", widget: "string", default: "ES/EN" }
+          - { label: "Target URL", name: "target_url", widget: "string", default: "/landing-page/" }
+          - { label: "ARIA Label", name: "aria_label", widget: "string", default: "Switch language", required: false }
+
+      # Optional Page-Level Navigation Override (List Widget)
+      - label: "Custom Page Navigation (Optional Override)"
+        name: "navigation"
+        widget: "list"
+        collapsed: true
+        required: false
+        summary: "{{fields.num}} - {{fields.label}} ({{fields.url}})"
+        fields:
+          - { label: "Number Badge", name: "num", widget: "string", default: "01" }
+          - { label: "Menu Label", name: "label", widget: "string" }
+          - { label: "Target URL", name: "url", widget: "string" }
+
+      # Hero Section (Object Widget with Image & String subfields)
+      - label: "Hero Section (Home / Landing Pages)"
+        name: "hero"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Section ID", name: "section_id", widget: "string", default: "inicio" }
+          - { label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "TRANSPORT & LOGISTICS" }
+          - { label: "Main Title (use \n for line break)", name: "title", widget: "text", default: "Hire\nVNCO Today" }
+          - { label: "CTA Button Label", name: "cta_label", widget: "string", default: "Contact us" }
+          - { label: "CTA Button URL", name: "cta_url", widget: "string", default: "/contacto/" }
+          - { label: "Background Image", name: "bg_image", widget: "image", default: "/images/truck_v2.webp", required: false }
+
+      # Services Section (Object + List of Cards)
+      - label: "Services Section (Home / Landing Pages)"
+        name: "services"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Section ID", name: "section_id", widget: "string", default: "servicios" }
+          - { label: "Section Title", name: "title", widget: "string", default: "Our service" }
+          - { label: "Introductory Copy", name: "intro", widget: "text" }
+          - { label: "Secondary Tagline", name: "tagline", widget: "string", required: false }
+          - label: "Service Cards"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.number}} · {{fields.title}}"
+            fields:
+              - { label: "Card Number", name: "number", widget: "string", default: "01" }
+              - { label: "Card Icon", name: "icon", widget: "image", default: "/images/Icon.svg" }
+              - { label: "Icon Alt Text", name: "icon_alt", widget: "string", required: false }
+              - { label: "Service Title", name: "title", widget: "string" }
+              - { label: "Service Description", name: "description", widget: "text" }
+
+      # About Us Section (Object + List of Images)
+      - label: "About Us Section (Home / Landing Pages)"
+        name: "about"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Section ID", name: "section_id", widget: "string", default: "nosotros" }
+          - { label: "Eyebrow Label", name: "eyebrow", widget: "string", default: "03 / ABOUT US" }
+          - { label: "Headline", name: "title", widget: "text", default: "We are the team that\nmoves your business." }
+          - { label: "Lead Paragraph", name: "lead_text", widget: "text" }
+          - { label: "Body Paragraph", name: "body_text", widget: "text" }
+          - label: "Gallery Images"
+            name: "images"
+            widget: "list"
+            summary: "{{fields.alt}} ({{fields.src}})"
+            fields:
+              - { label: "Image File", name: "src", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+
+      # Bottom Contact CTA Section (Home / Landing Pages)
+      - label: "Contact CTA Banner (Home / Landing Pages)"
+        name: "contact_cta"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Section ID", name: "section_id", widget: "string", default: "contacto" }
+          - { label: "Eyebrow Label", name: "eyebrow", widget: "string", default: "04 / CONTACT US" }
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Lead Copy (Markdown allowed)", name: "lead_markdown", widget: "text" }
+          - { label: "Bottom Note", name: "note", widget: "string" }
+
+      # Contact Page Header Fields
+      - { label: "Contact Eyebrow", name: "eyebrow", widget: "string", required: false }
+      - { label: "Back to Home Label", name: "back_home_label", widget: "string", required: false }
+      - { label: "Back to Home URL", name: "back_home_url", widget: "string", required: false }
+      - { label: "Contact Main Heading", name: "heading", widget: "string", required: false }
+      - { label: "Contact Subheading", name: "subheading", widget: "text", required: false }
+
+      # Contact Form Configuration (Object + List of Dynamic Fields)
+      - label: "Contact Form Panel (Contact Pages)"
+        name: "form"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Form Panel Title", name: "title", widget: "string", default: "Send us a message" }
+          - { label: "Form Panel Subtitle", name: "subtitle", widget: "text" }
+          - { label: "Submit Button Label", name: "submit_label", widget: "string", default: "Send message" }
+          - { label: "Empty Fields Warning Message", name: "empty_message", widget: "string", default: "Please fill out all fields" }
+          - { label: "Success Feedback Message", name: "success_message", widget: "string", default: "Message sent!" }
+          - label: "Form Fields"
+            name: "fields"
+            widget: "list"
+            summary: "{{fields.label}} ({{fields.type}} · {{fields.width}})"
+            fields:
+              - { label: "Field Name (HTML attribute)", name: "name", widget: "string" }
+              - { label: "Field Label", name: "label", widget: "string" }
+              - label: "Input Type"
+                name: "type"
+                widget: "select"
+                options: ["text", "email", "tel", "textarea"]
+                default: "text"
+              - { label: "Placeholder Text", name: "placeholder", widget: "string" }
+              - label: "Layout Width"
+                name: "width"
+                widget: "select"
+                options: ["half", "full"]
+                default: "half"
+              - { label: "Textarea Rows", name: "rows", widget: "number", default: 4, required: false }
+              - { label: "Required Field", name: "required", widget: "boolean", default: true }
+
+      # Contact Information Panel (Object + List + Office Card)
+      - label: "Contact Info & Office Panel (Contact Pages)"
+        name: "contact_info"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Panel Title", name: "title", widget: "string", default: "Contact info" }
+          - { label: "Panel Subtitle", name: "subtitle", widget: "text", required: false }
+          - label: "Contact Lines"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.label}}: {{fields.value}}"
+            fields:
+              - { label: "Label (e.g. Email, Phone, Address)", name: "label", widget: "string" }
+              - { label: "Display Value", name: "value", widget: "text" }
+              - { label: "Link Href (mailto:, tel:, or empty)", name: "href", widget: "string", required: false }
+          - label: "Office / Map Showcase Card"
+            name: "office_card"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Show Office Card", name: "enabled", widget: "boolean", default: false }
+              - { label: "Card Title", name: "title", widget: "string", required: false }
+              - { label: "Card Caption", name: "caption", widget: "string", required: false }
+              - { label: "Office / Map Image", name: "image", widget: "image", required: false }
+
+      # Optional Markdown Body for standard pages / shortcodes
+      - { label: "Optional Body Content", name: "body", widget: "markdown", required: false }
+
+  # =========================================================================
+  # 2. FILE COLLECTION: Global Site & Brand Settings (data/settings/general.yaml)
+  # =========================================================================
+  - name: "settings"
+    label: "Global Site Settings (File Collection)"
+    description: "Configure global branding, logos, default navigation, and footer contact details."
+    files:
+      - name: "general"
+        label: "General Brand, Navigation & Contact Settings"
+        file: "data/settings/general.yaml"
+        format: "yaml"
+        fields:
+          - { label: "Brand Short Name", name: "brand_name", widget: "string", default: "VNCO" }
+          - { label: "Legal Company Name", name: "legal_name", widget: "string", default: "VNCO L.L.C" }
+          - { label: "Header Brand Logo", name: "header_logo", widget: "image", default: "/images/Group-1.svg" }
+          - { label: "Header Logo Alt Text", name: "header_logo_alt", widget: "string", default: "VNCO logo" }
+          - { label: "Footer Brand Logo", name: "footer_logo", widget: "image", default: "/images/Frame-8@2x.png" }
+          - { label: "Footer Logo Alt Text", name: "footer_logo_alt", widget: "string", default: "VNCO footer logo" }
+          - { label: "Global Eyebrow Label", name: "eyebrow", widget: "string", default: "TRANSPORT & LOGISTICS" }
+          - { label: "Footer Tagline", name: "tagline", widget: "string", default: "Transport and logistics, with a personal touch." }
+          - { label: "Footer Sub-Label", name: "sub_label", widget: "string", default: "VNCO / TRANSPORT AND LOGISTICS" }
+          - { label: "Mobile Drawer Tagline", name: "mobile_tagline", widget: "string", default: "Connecting your business to its next destination." }
+          - { label: "Copyright Notice", name: "copyright", widget: "string", default: "Copyright © VNCO L.L.C" }
+          - { label: "Close Menu Button Label", name: "close_menu_label", widget: "string", default: "Close ×" }
+          - { label: "Open Menu ARIA Label", name: "open_menu_aria", widget: "string", default: "Open menu" }
+          - label: "Primary Contact Details"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Primary Email", name: "email", widget: "string", default: "Rick@vncologistics.com" }
+              - { label: "Phone Display Text", name: "phone_display", widget: "string", default: "+1 (239) 203 1761" }
+              - { label: "Phone Dial Href", name: "phone_href", widget: "string", default: "+12392031761" }
+              - { label: "Main Office Address", name: "address", widget: "text", default: "Av. del Transporte 123, 28001 Florida, US" }
+          - label: "Default Main Navigation Links"
+            name: "navigation"
+            widget: "list"
+            summary: "{{fields.num}} · {{fields.label}} → {{fields.url}}"
+            fields:
+              - { label: "Item Number", name: "num", widget: "string", default: "01" }
+              - { label: "Link Label", name: "label", widget: "string" }
+              - { label: "URL / Anchor", name: "url", widget: "string" }

@@ -1,0 +1,61 @@
+# Site-level configuration (Hugo v0.146.0+ & Sveltia CMS compatible)
+baseURL: "https://vncologistics.com/"
+languageCode: "en-us"
+title: "VNCO · Transport & Logistics"
+theme: "vnco-theme"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: false
+  minifyOutput: true
+
+params:
+  description: "Reliable freight transport, integrated logistics, and on-time deliveries with a personal touch."
+  brand:
+    name: "VNCO"
+    legal_name: "VNCO L.L.C"
+    header_logo: "/images/Group-1.svg"
+    header_logo_alt: "VNCO logo"
+    footer_logo: "/images/Frame-8@2x.png"
+    footer_logo_alt: "VNCO footer logo"
+    eyebrow: "TRANSPORT & LOGISTICS"
+    tagline: "Transport and logistics, with a personal touch."
+    sub_label: "VNCO / TRANSPORT AND LOGISTICS"
+    mobile_tagline: "Connecting your business to its next destination."
+    copyright: "Copyright © VNCO L.L.C"
+  contact:
+    email: "Rick@vncologistics.com"
+    phone_display: "+1 (239) 203 1761"
+    phone_href: "+12392031761"
+    address: "Av. del Transporte 123, 28001 Florida, US"
+
+menus:
+  main:
+    - identifier: "home"
+      name: "Home"
+      url: "/#inicio"
+      weight: 1
+      params:
+        num: "01"
+    - identifier: "services"
+      name: "Our services"
+      url: "/#servicios"
+      weight: 2
+      params:
+        num: "02"
+    - identifier: "about"
+      name: "About us"
+      url: "/#nosotros"
+      weight: 3
+      params:
+        num: "03"
+    - identifier: "contact"
+      name: "Contact us"
+      url: "/contacto/"
+      weight: 4
+      params:
+        num: "04"
