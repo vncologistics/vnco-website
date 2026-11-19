@@ -13,6 +13,10 @@ minify:
   disableXML: false
   minifyOutput: true
 
+caches:
+  images:
+    dir: :cacheDir/images
+
 params:
   description: "Reliable freight transport, integrated logistics, and on-time deliveries with a personal touch."
   brand:
