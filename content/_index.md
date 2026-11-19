@@ -16,7 +16,7 @@ hero:
 services:
   section_id: servicios
   title: Our service
-  intro: "We understand your business and the day-to-day needs that come with it, so every shipment gets our full, personal attention. Here's how we can help:  Demo for this"
+  intro: "We understand your business and the day-to-day needs that come with it, so every shipment gets our full, personal attention. Here's how we can help:"
   items:
     - number: '01'
       icon: /images/Icon.svg
