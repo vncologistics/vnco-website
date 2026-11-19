@@ -7,16 +7,16 @@ page_type: home
 draft: false
 navigation: []
 hero:
-  section_id: inicio
+  section_id: home
   eyebrow: TRANSPORT & LOGISTICS
   title: |-
     Hire
     VNCO Today
   cta_label: Contact us
-  cta_url: /contacto/
+  cta_url: /contact/
   bg_image: /images/truck_v2.webp
 services:
-  section_id: servicios
+  section_id: services
   title: Our service
   intro: "We understand your business and the day-to-day needs that come with it, so every shipment gets our full, personal attention. Here's how we can help:"
   tagline: ''
@@ -37,7 +37,7 @@ services:
       title: On-time deliveries
       description: We remove uncertainty from your supply chain with precision and care.
 about:
-  section_id: nosotros
+  section_id: about
   eyebrow: 03 / ABOUT US
   title: |-
     We are the team that
@@ -50,7 +50,7 @@ about:
     - src: /images/uploads/vnco_box.png
       alt: VNCO box
 contact_cta:
-  section_id: contacto
+  section_id: contact
   eyebrow: 04 / CONTACT US
   title: Let's talk about your freight with the trucking experts
   lead_markdown: At **VNCO**, we're not middlemen — we're the truckers moving your freight. When you work with us, safe, on-time deliveries are **guaranteed.**

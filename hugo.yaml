@@ -41,25 +41,25 @@ menus:
   main:
     - identifier: "home"
       name: "Home"
-      url: "/#inicio"
+      url: "/#home"
       weight: 1
       params:
         num: "01"
     - identifier: "services"
       name: "Our services"
-      url: "/#servicios"
+      url: "/#services"
       weight: 2
       params:
         num: "02"
     - identifier: "about"
       name: "About us"
-      url: "/#nosotros"
+      url: "/#about"
       weight: 3
       params:
         num: "03"
     - identifier: "contact"
       name: "Contact us"
-      url: "/contacto/"
+      url: "/contact/"
       weight: 4
       params:
         num: "04"

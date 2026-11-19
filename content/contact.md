@@ -5,8 +5,9 @@ lang_code: "en"
 layout: "page"
 page_type: "contact"
 draft: false
+aliases: ["/contacto/"]
 
-section_id: "contacto"
+section_id: "contact"
 eyebrow: "04 / CONTACT US"
 back_home_label: "← Back to home"
 back_home_url: "/"

@@ -15,7 +15,7 @@ logo_url: "/images/Group-1.svg"
 collections:
   # =========================================================================
   # 1. FOLDER COLLECTION: All Editable Content Pages (content/*.md)
-  #    Covers Home (_index.md via index_file), Contact (contacto.md),
+  #    Covers Home (_index.md via index_file), Contact (contact.md),
   #    and any new page created.
   # =========================================================================
   - name: "pages"
@@ -76,11 +76,11 @@ collections:
         collapsed: true
         required: false
         fields:
-          - { label: "Section ID", name: "section_id", widget: "string", default: "inicio" }
+          - { label: "Section ID", name: "section_id", widget: "string", default: "home" }
           - { label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "TRANSPORT & LOGISTICS" }
           - { label: "Main Title (use \n for line break)", name: "title", widget: "text", default: "Hire\nVNCO Today" }
           - { label: "CTA Button Label", name: "cta_label", widget: "string", default: "Contact us" }
-          - { label: "CTA Button URL", name: "cta_url", widget: "string", default: "/contacto/" }
+          - { label: "CTA Button URL", name: "cta_url", widget: "string", default: "/contact/" }
           - { label: "Background Image", name: "bg_image", widget: "image", default: "/images/truck_v2.webp", required: false }
 
       # Services Section (Object + List of Cards)
@@ -90,7 +90,7 @@ collections:
         collapsed: true
         required: false
         fields:
-          - { label: "Section ID", name: "section_id", widget: "string", default: "servicios" }
+          - { label: "Section ID", name: "section_id", widget: "string", default: "services" }
           - { label: "Section Title", name: "title", widget: "string", default: "Our service" }
           - { label: "Introductory Copy", name: "intro", widget: "text" }
           - { label: "Secondary Tagline", name: "tagline", widget: "string", required: false }
@@ -112,7 +112,7 @@ collections:
         collapsed: true
         required: false
         fields:
-          - { label: "Section ID", name: "section_id", widget: "string", default: "nosotros" }
+          - { label: "Section ID", name: "section_id", widget: "string", default: "about" }
           - { label: "Eyebrow Label", name: "eyebrow", widget: "string", default: "03 / ABOUT US" }
           - { label: "Headline", name: "title", widget: "text", default: "We are the team that\nmoves your business." }
           - { label: "Lead Paragraph", name: "lead_text", widget: "text" }
@@ -132,7 +132,7 @@ collections:
         collapsed: true
         required: false
         fields:
-          - { label: "Section ID", name: "section_id", widget: "string", default: "contacto" }
+          - { label: "Section ID", name: "section_id", widget: "string", default: "contact" }
           - { label: "Eyebrow Label", name: "eyebrow", widget: "string", default: "04 / CONTACT US" }
           - { label: "Heading", name: "title", widget: "string" }
           - { label: "Lead Copy (Markdown allowed)", name: "lead_markdown", widget: "text" }
