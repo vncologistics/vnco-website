@@ -14,8 +14,95 @@ logo_url: "/images/Group-1.svg"
 
 collections:
   # =========================================================================
+  # 0. FILE COLLECTION: Home Page (content/_index.md)
+  #    Edita hero, servicios, sobre nosotros y CTA de contacto de la Home.
+  # =========================================================================
+  - name: "home"
+    label: "Home Page"
+    description: "Edit the homepage: hero, services, about and contact CTA."
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "content/_index.md"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string", required: true }
+          - { label: "Meta Description", name: "description", widget: "text", required: false }
+          - label: "Language Code"
+            name: "lang_code"
+            widget: "select"
+            options: ["en", "es"]
+            default: "en"
+          - label: "Page Type"
+            name: "page_type"
+            widget: "select"
+            options:
+              - { label: "Home Root (_index.md)", value: "home" }
+            default: "home"
+          - { label: "Draft", name: "draft", widget: "boolean", default: false }
+
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Section ID", name: "section_id", widget: "string", default: "inicio" }
+              - { label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "TRANSPORT & LOGISTICS" }
+              - { label: "Main Title (use \n for line break)", name: "title", widget: "text", default: "Hire\nVNCO Today" }
+              - { label: "CTA Button Label", name: "cta_label", widget: "string", default: "Contact us" }
+              - { label: "CTA Button URL", name: "cta_url", widget: "string", default: "/contacto/" }
+              - { label: "Background Image", name: "bg_image", widget: "image", default: "/images/truck_v2.webp", required: false }
+
+          - label: "Services Section"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Section ID", name: "section_id", widget: "string", default: "servicios" }
+              - { label: "Section Title", name: "title", widget: "string", default: "Our service" }
+              - { label: "Introductory Copy", name: "intro", widget: "text" }
+              - label: "Service Cards"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.number}} · {{fields.title}}"
+                fields:
+                  - { label: "Card Number", name: "number", widget: "string", default: "01" }
+                  - { label: "Card Icon", name: "icon", widget: "image", default: "/images/Icon.svg" }
+                  - { label: "Icon Alt Text", name: "icon_alt", widget: "string", required: false }
+                  - { label: "Service Title", name: "title", widget: "string" }
+                  - { label: "Service Description", name: "description", widget: "text" }
+
+          - label: "About Us Section"
+            name: "about"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Section ID", name: "section_id", widget: "string", default: "nosotros" }
+              - { label: "Eyebrow Label", name: "eyebrow", widget: "string", default: "03 / ABOUT US" }
+              - { label: "Headline", name: "title", widget: "text", default: "We are the team that\nmoves your business." }
+              - { label: "Lead Paragraph", name: "lead_text", widget: "text" }
+              - { label: "Body Paragraph", name: "body_text", widget: "text" }
+              - label: "Gallery Images"
+                name: "images"
+                widget: "list"
+                summary: "{{fields.alt}} ({{fields.src}})"
+                fields:
+                  - { label: "Image File", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+
+          - label: "Contact CTA Banner"
+            name: "contact_cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Section ID", name: "section_id", widget: "string", default: "contacto" }
+              - { label: "Eyebrow Label", name: "eyebrow", widget: "string", default: "04 / CONTACT US" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Lead Copy (Markdown allowed)", name: "lead_markdown", widget: "text" }
+              - { label: "Bottom Note", name: "note", widget: "string" }
+
+  # =========================================================================
   # 1. FOLDER COLLECTION: All Editable Content Pages (content/*.md)
-  #    Covers Home (_index.md), Contact (contacto.md), and any new page created.
+  #    Covers Contact (contacto.md) and any new page created.
   # =========================================================================
   - name: "pages"
     label: "Site Pages (Folder Collection)"
