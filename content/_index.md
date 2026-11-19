@@ -2,8 +2,10 @@
 title: VNCO · Transport & Logistics
 description: Reliable freight transport, integrated logistics, and on-time deliveries.
 lang_code: en
+layout: page
 page_type: home
 draft: false
+navigation: []
 hero:
   section_id: inicio
   eyebrow: TRANSPORT & LOGISTICS
@@ -15,8 +17,9 @@ hero:
   bg_image: /images/truck_v2.webp
 services:
   section_id: servicios
-  title: Our service
+  title: Our service  demo holaaaa
   intro: "We understand your business and the day-to-day needs that come with it, so every shipment gets our full, personal attention. Here's how we can help:"
+  tagline: ''
   items:
     - number: '01'
       icon: /images/Icon.svg
@@ -52,4 +55,11 @@ contact_cta:
   title: Let's talk about your freight with the trucking experts
   lead_markdown: At **VNCO**, we're not middlemen — we're the truckers moving your freight. When you work with us, safe, on-time deliveries are **guaranteed.**
   note: Tell us what you need to move and get accurate rates.
+eyebrow: ''
+back_home_label: ''
+back_home_url: ''
+heading: ''
+subheading: ''
+form: null
+contact_info: null
 ---
