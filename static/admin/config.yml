@@ -2,7 +2,7 @@
 
 backend:
   name: github
-  repo: vnco-logistics/vnco-hugo-site
+  repo: vncologistics/vnco-website
   branch: main
 
 media_folder: "static/images/uploads"
