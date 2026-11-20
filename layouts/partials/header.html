@@ -1,0 +1,44 @@
+{{/*
+  Partial: header.html
+  Description: Renders the top sticky header, brand logo, desktop navigation, hamburger button, and mobile menu drawer.
+  Expected Context (.): Current Hugo Page object.
+*/}}
+{{ $settings := site.Data.settings.general }}
+{{ $brandLogo := .Params.header_logo | default $settings.header_logo | default site.Params.brand.header_logo | default "/images/Group-1.svg" }}
+{{ $brandAlt := .Params.header_logo_alt | default $settings.header_logo_alt | default site.Params.brand.header_logo_alt | default "VNCO logo" }}
+{{ $homeHref := cond .IsHome "#home" ("/" | relLangURL) }}
+{{ $closeLabel := .Params.close_menu_label | default $settings.close_menu_label | default "Close ×" }}
+{{ $openAria := .Params.open_menu_aria | default $settings.open_menu_aria | default "Open menu" }}
+{{ $eyebrow := .Params.footer_eyebrow | default $settings.eyebrow | default site.Params.brand.eyebrow | default "TRANSPORT & LOGISTICS" }}
+{{ $mobileTagline := .Params.mobile_tagline | default $settings.mobile_tagline | default site.Params.brand.mobile_tagline | default "Connecting your business to its next destination." }}
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <a class="brand" href="{{ $homeHref }}" aria-label="VNCO home">
+    <img
+      class="brand-logo"
+      loading="lazy"
+      alt="{{ $brandAlt }}"
+      src="{{ $brandLogo }}"
+    />
+  </a>
+
+  {{ partial "nav.html" (dict "page" . "mode" "desktop") }}
+
+  <button class="menu-btn" id="menuBtn" aria-label="{{ $openAria }}">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="menu-close" id="menuClose">{{ $closeLabel }}</button>
+  {{ partial "nav.html" (dict "page" . "mode" "mobile") }}
+  <div class="menu-footer">
+    <div class="menu-footer-label">{{ $eyebrow }}</div>
+    <p>{{ $mobileTagline }}</p>
+  </div>
+</aside>
